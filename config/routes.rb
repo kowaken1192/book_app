@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'map/index'
   resources :posts
   root "posts#index"
   get '/account', to: 'account#show'
@@ -21,12 +22,10 @@ Rails.application.routes.draw do
   get '/reservations/confirm', to: 'reservations#confirm', as: 'confirm_reservation'
   post '/reservations/confirm', to: 'reservations#confirm'
   get '/rooms/search', to: 'rooms#search'
-
+  get 'map/index', to: 'map#index'
   resources :reservations, only: [:index, :new, :create, :show] do
     collection do
       post 'confirm'
     end
   end
 end
-
-
